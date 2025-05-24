@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Spinner } from "../../components/common/Spinner";
+import { Spinner } from "../common/Spinner";
 import { X } from "lucide-react";
 
 const UploadInput = ({ onClose, onUpdate, icon, text }) => {
@@ -49,7 +49,7 @@ const UploadInput = ({ onClose, onUpdate, icon, text }) => {
         <div className="bg-white p-6 rounded-lg ">
             <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-2">
-                    <img src={icon} className="w-7 h-7" alt="icon" />
+                    <img src={icon} className="w-7 h-7 rounded-full" alt="icon" />
                     <h2 className="text-xl font-bold">{text}</h2>
                 </div>
                 <div onClick={onClose}>
@@ -61,7 +61,7 @@ const UploadInput = ({ onClose, onUpdate, icon, text }) => {
             </div>
 
             <div className="mb-4">
-                <label htmlFor="name" className="block mb-2 font-bold">
+                <label htmlFor="name" className="block mb-2">
                     Name
                 </label>
                 <input
@@ -77,8 +77,8 @@ const UploadInput = ({ onClose, onUpdate, icon, text }) => {
             </div>
 
             <div className="mb-4">
-                <label htmlFor="link" className="block mb-2 font-bold">
-                    Link / Description
+                <label htmlFor="link" className="block mb-2">
+                    Transcript
                 </label>
                 <textarea
                     id="link"
@@ -97,7 +97,7 @@ const UploadInput = ({ onClose, onUpdate, icon, text }) => {
                     onClick={handleUpdate}
                     className="bg-gray-900 text-white px-4 py-2 rounded hover:bg-black"
                 >
-                    Update
+                    Upload
                 </button>
             </div>
         </div>

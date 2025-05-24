@@ -1,3 +1,20 @@
+/**
+ * ModalContent Component
+ * 
+ * A modal form component that allows users to create a new project by entering a project name.
+ * Includes validation for minimum length, loading spinner during API call, and error handling.
+ * On successful creation, it refetches projects, closes the modal, and navigates to the projects page.
+ * 
+ * @component
+ * @example
+ * <ModalContent onClose={() => setShowModal(false)} />
+ * 
+ * @param {Object} props - Component props.
+ * @param {function} props.onClose - Callback function to close the modal.
+ * 
+ * @returns {JSX.Element} The modal form content for project creation.
+ */
+
 import React, { useState } from "react";
 import { Spinner } from "../common/Spinner";
 import { toast } from "sonner";
@@ -5,16 +22,25 @@ import {
     useCreateProjectMutation,
     useGetProjectsQuery,
 } from "../../redux/service";
+import { useNavigate } from "react-router-dom";
 
-// Modal component for creating new projects
 const ModalContent = ({ onClose }) => {
     const [projectName, setProjectName] = useState("");
     const [error, setError] = useState("");
 
     const [createProject, { isLoading }] = useCreateProjectMutation();
-
     const { refetch } = useGetProjectsQuery();
 
+    const navigate = useNavigate();
+
+    /**
+     * Handles form submission for creating a new project.
+     * Validates project name length and calls the API.
+     * On success, shows a success toast, clears input, refetches projects, closes modal, and navigates to projects page.
+     * On failure, shows an error toast and sets error message.
+     * 
+     * @param {React.FormEvent<HTMLFormElement>} e - Form submit event
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (projectName.trim().length < 3) {
@@ -29,6 +55,7 @@ const ModalContent = ({ onClose }) => {
                 setProjectName("");
                 await refetch();
                 onClose();
+                navigate("/projects");
             }
         } catch (err) {
             toast.error(err.data?.message || "Failed to create project");
@@ -36,7 +63,11 @@ const ModalContent = ({ onClose }) => {
         }
     };
 
-    // Validate project name as user types
+    /**
+     * Updates projectName state and validates the input on every change.
+     * 
+     * @param {React.ChangeEvent<HTMLInputElement>} e - Input change event
+     */
     const handleProjectNameChange = (e) => {
         const value = e.target.value;
         setProjectName(value);
@@ -57,7 +88,7 @@ const ModalContent = ({ onClose }) => {
     }
 
     return (
-        <div className="w-full px-5">
+        <div className="w-full px-5 rounded-[33px]">
             <div className="w-full mb-5">
                 <h1 className="font-roboto font-bold text-lg md:text-xl">
                     Create Project
@@ -87,10 +118,11 @@ const ModalContent = ({ onClose }) => {
                         <p className="text-red-500 text-sm mt-1">{error}</p>
                     )}
                 </div>
+
                 <p className="text-red-500 text-sm">
                     Project Name Can't be empty
                 </p>
-                {/* Form actions */}
+
                 <div className="flex justify-end gap-3 font-semibold my-5">
                     <button
                         type="button"

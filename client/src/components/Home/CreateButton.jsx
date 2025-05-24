@@ -1,7 +1,6 @@
 import React from "react";
 import AddIcon from "../../assets/Home/AddIcon.png";
 
-// create button for creating new project
 const CreateButton = ({ handleClick }) => {
     return (
         <button

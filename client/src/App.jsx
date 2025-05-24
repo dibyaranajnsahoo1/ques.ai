@@ -6,10 +6,10 @@ import Home from "./pages/protected/Home";
 import { Spinner } from "./components/common/Spinner";
 import NavLayout from "./components/common/NavLayout";
 import Projects from "./pages/protected/Projects";
-import Upload from "./pages/protected/Upload";
+import Upload from "./pages/protected/AddPodcast";
 import SideBarLayout from "./components/common/SideBarLayout";
 import AccountSettings from "./pages/protected/AccountSettings";
-import TranscriptEdit from "./pages/protected/TranscriptEdit";
+import TranscriptEdit from "./pages/protected/EditTranscript";
 
 function App() {
     // Checking user authentication status

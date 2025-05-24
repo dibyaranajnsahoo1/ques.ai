@@ -1,8 +1,9 @@
+// Upload.js
+
 import React, { useState } from "react";
 import UploadBox from "../../components/Upload/UploadBox";
-// import DataTable from "../components/UploadPage/DataTable";
 import ModalBox from "../../components/common/ModalBox";
-import UploadContent from "../../components/Upload/UploadContent";
+import UploadContent from "../../components/Upload/AddPodcastContent";
 import { toast } from "sonner";
 import { useParams } from "react-router-dom";
 import UploadNavBar from "../../components/common/UploadNavBar";
@@ -14,7 +15,11 @@ import {
     useGetTranscriptsQuery,
 } from "../../redux/service";
 import { Spinner } from "../../components/common/Spinner";
-import TsTable from "../../components/Upload/TsTable";
+import TsTable from "../../components/Upload/YourFileTable";
+
+import rssIcon from "../../assets/rss.png";
+import ytIcon from "../../assets/yt.png";
+import upl from "../../assets/uplod.png";
 
 const Upload = () => {
     const { projectId } = useParams();
@@ -23,38 +28,34 @@ const Upload = () => {
 
     const { data: projectData } = useGetProjectByIdQuery(projectId);
     const [createTranscript] = useCreateTranscriptMutation();
-    const { data: transcriptsData, isLoading } =
-        useGetTranscriptsQuery(projectId);
+    const { data: transcriptsData, isLoading } = useGetTranscriptsQuery(projectId);
 
     const [selectedIcon, setSelectedIcon] = useState(null);
     const [selectedText, setSelectedText] = useState(null);
 
-    // all the uploading options
     const uploadMethods = [
         {
             platform: "Rss Feed",
-            icon: "https://cdn.iconfinder.com/stored_data/2233396/128/png?token=1746086611-amwhaVv9z4s43Y0%2BgZ%2FpJMO9NNWcG8KQ6Iz8BelwBh0%3D",
+            icon: rssIcon,
             text: "RSS Feed",
-            description: "dolor sit amet consectetur adipisicing elit ftre.",
+            description: "Lorem ipsum dolor sit. Dolor lorem sit.",
         },
         {
             platform: "youtube",
-            icon: "https://cdn.iconfinder.com/stored_data/2233393/128/png?token=1746086503-Ae6fheXN%2B8fdNrylj9sDkxZu1mKEmf96LwBpV4S%2Fds0%3D",
+            icon: ytIcon,
             text: "YouTube Video",
-            description: "dolor sit amet consectetur adipisicing elit ftre.",
+            description: "Lorem ipsum dolor sit. Dolor lorem sit.",
         },
         {
             platform: "Upload Files",
-            icon: "https://cdn.iconfinder.com/stored_data/2233392/128/png?token=1746086413-Xvj2Dd8AFKGdNiVs8Pdv%2BG84wvSnZrWuXGTIiKBJcGw%3D",
+            icon: upl,
             text: "Upload Files",
-            description: "dolor sit amet consectetur adipisicing elit ftre.",
+            description: "Lorem ipsum dolor sit. Dolor lorem sit.",
         },
     ];
 
     const displayMethods =
-        transcriptsData?.data?.length > 0
-            ? uploadMethods.slice(0, 3)
-            : uploadMethods;
+        transcriptsData?.data?.length > 0 ? uploadMethods.slice(0, 3) : uploadMethods;
 
     const handleMethodClick = (icon, text) => {
         setSelectedIcon(icon);
@@ -85,7 +86,7 @@ const Upload = () => {
     }
 
     return (
-        <div className="w-full max-h-screen bg-[#f9f9f9]">
+        <div className="w-full min-h-screen bg-[#f9f9f9] px-4 sm:px-6 md:px-8 pb-8">
             {/* Navigation section */}
             <UploadNavBar
                 projectName={projectData?.data?.name}
@@ -104,12 +105,12 @@ const Upload = () => {
 
             {/* Main Content */}
             <div className="w-full flex justify-start items-center">
-                <div className="w-11/12 my-4 ml-1">
-                    <h1 className="font-bold text-3xl font-roboto text-black">
+                <div className="w-full md:w-11/12 my-4 ml-1">
+                    <h1 className="font-bold text-2xl sm:text-3xl font-roboto text-black">
                         Add Podcast
                     </h1>
 
-                    <div className="py-5 mt-4 flex flex-wrap justify-between gap-1">
+                    <div className="py-5 mt-4 flex flex-wrap justify-between gap-3">
                         {displayMethods && displayMethods.length > 0 ? (
                             displayMethods.map((item, index) => (
                                 <div
@@ -117,31 +118,31 @@ const Upload = () => {
                                     onClick={() =>
                                         handleMethodClick(item.icon, item.text)
                                     }
-                                    className="border-1-black w-5/12 shadow-lg lg:w-[30%] h-24 lg:h-32 flex items-center rounded-md border-2 mb-3 cursor-pointer"
+                                    className="w-full sm:w-[48%] lg:w-[30%] shadow-lg h-24 sm:h-28 lg:h-32 flex items-center rounded-md border-2 mb-3 cursor-pointer"
                                 >
-                                    <div className="flex w-full p-1 lg:p-2 justify-center items-center rounded-md">
-                                        <div className="flex w-3/4 flex-col justify-start">
-                                            <h1 className="font-roboto font-semibold text-md lg:text-xl">
+                                    <div className="flex w-full p-6 justify-between items-center rounded-md">
+                                        <div className="flex flex-col justify-start w-3/4">
+                                            <h1 className="font-roboto font-semibold text-sm sm:text-md lg:text-xl">
                                                 {item.text}
                                             </h1>
-                                            <p className="text-[12px] lg:text-sm font-roboto text-[#6e6e6e]">
+                                            <p className="text-xs sm:text-sm font-roboto text-[#6e6e6e]">
                                                 {item.description}
                                             </p>
                                         </div>
                                         <div
-                                            className={`w-[37px] lg:w-14 ${
+                                            className={`w-9 sm:w-12 lg:w-14 ${
                                                 item.text === "Upload Files"
                                                     ? "bg-[#f3e8ff]"
                                                     : ""
-                                            } rounded-md lg:rounded-2xl min-h-[37px] lg:min-h-14 flex justify-center items-center`}
+                                            } rounded-md sm:rounded-xl min-h-9 sm:min-h-12 lg:min-h-14 flex justify-center items-center`}
                                         >
                                             <img
                                                 src={item.icon}
                                                 alt="Logo"
                                                 className={
                                                     item.text === "Upload Files"
-                                                        ? "w-6 lg:w-8"
-                                                        : "w-8 lg:w-14"
+                                                        ? "w-5 sm:w-6 lg:w-8"
+                                                        : "w-6 sm:w-8 lg:w-14"
                                                 }
                                             />
                                         </div>

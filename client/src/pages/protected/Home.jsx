@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addOpenModal } from "../../redux/slice";
-import MainBanner from "../../components/Home/MainBanner";
+import MainBanner from "../../components/Home/Banner";
 import TextArea from "../../components/Home/TextArea";
 import CreateButton from "../../components/Home/CreateButton";
 import ModalBox from "../../components/common/ModalBox";
-import ModalContent from "../../components/Home/ModalContent";
+import ModalContent from "../../components/Home/CreateProjectPopup";
 import { Spinner } from "../../components/common/Spinner";
 import { useGetProjectsQuery } from "../../redux/service";
 import { toast } from "sonner";
@@ -14,12 +14,9 @@ import { toast } from "sonner";
 const Home = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
-    // Get states from Redux
     const myInfo = useSelector((state) => state.service.myInfo);
     const isOpen = useSelector((state) => state.service.openModal);
 
-    // RTK Query hook
     const { data: projectsData, isLoading, error } = useGetProjectsQuery();
 
     useEffect(() => {
@@ -65,7 +62,7 @@ const Home = () => {
                     </div>
 
                     {/* textarea-section */}
-                    <div className="flex justify-center items-center md:pt-9 pb-6 md:px-24">
+                    <div className="flex justify-center items-center md:pt-9 pb-6 md:px-28">
                         <TextArea content={textContent} />
                     </div>
 

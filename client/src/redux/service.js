@@ -35,7 +35,9 @@ export const serviceApi = createApi({
                     await queryFulfilled;
                     // Force refresh all queries after login
                     dispatch(serviceApi.util.resetApiState());
-                } catch {}
+                } catch {
+                    console.log(error);
+                }
             },
         }),
         myInfo: builder.query({

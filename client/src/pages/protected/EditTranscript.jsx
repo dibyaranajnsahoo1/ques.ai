@@ -115,15 +115,14 @@ const TranscriptEdit = () => {
                         Speaker
                     </h3>
                     {isEditing ? (
-                        <div className="p-4">
-                            <textarea
-                                ref={contentEditableRef}
-                                value={content}
-                                onChange={(e) => setContent(e.target.value)}
-                                className="w-full min-h-[20rem] p-4 rounded resize-none outline-none border"
-                                placeholder="Content"
-                            />
-                        </div>
+                        <textarea
+                            ref={contentEditableRef}
+                            value={content}
+                            onChange={(e) => setContent(e.target.value)}
+                            className="w-full min-h-[20rem] p-4 rounded resize-none outline-none border-none"
+                            placeholder="Content"
+                        />
+
                     ) : (
                         <div className="overflow-y-auto w-full h-full p-4">
                             <p className="w-full h-[calc(100%-4rem)] p-4">

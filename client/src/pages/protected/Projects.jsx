@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addOpenModal } from "../../redux/slice";
 import { useGetProjectsQuery } from "../../redux/service";
 import ModalBox from "../../components/common/ModalBox";
-import ModalContent from "../../components/Home/ModalContent";
+import ModalContent from "../../components/Home/CreateProjectPopup";
 import CreateButton from "../../components/Home/CreateButton";
 import { Spinner } from "../../components/common/Spinner";
 
