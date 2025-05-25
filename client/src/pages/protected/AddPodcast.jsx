@@ -1,4 +1,4 @@
-// Upload.js
+
 
 import React, { useState } from "react";
 import UploadBox from "../../components/Upload/UploadBox";

@@ -1,19 +1,3 @@
-/**
- * ModalContent Component
- * 
- * A modal form component that allows users to create a new project by entering a project name.
- * Includes validation for minimum length, loading spinner during API call, and error handling.
- * On successful creation, it refetches projects, closes the modal, and navigates to the projects page.
- * 
- * @component
- * @example
- * <ModalContent onClose={() => setShowModal(false)} />
- * 
- * @param {Object} props - Component props.
- * @param {function} props.onClose - Callback function to close the modal.
- * 
- * @returns {JSX.Element} The modal form content for project creation.
- */
 
 import React, { useState } from "react";
 import { Spinner } from "../common/Spinner";
@@ -33,14 +17,6 @@ const ModalContent = ({ onClose }) => {
 
     const navigate = useNavigate();
 
-    /**
-     * Handles form submission for creating a new project.
-     * Validates project name length and calls the API.
-     * On success, shows a success toast, clears input, refetches projects, closes modal, and navigates to projects page.
-     * On failure, shows an error toast and sets error message.
-     * 
-     * @param {React.FormEvent<HTMLFormElement>} e - Form submit event
-     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (projectName.trim().length < 3) {
@@ -63,11 +39,7 @@ const ModalContent = ({ onClose }) => {
         }
     };
 
-    /**
-     * Updates projectName state and validates the input on every change.
-     * 
-     * @param {React.ChangeEvent<HTMLInputElement>} e - Input change event
-     */
+
     const handleProjectNameChange = (e) => {
         const value = e.target.value;
         setProjectName(value);
