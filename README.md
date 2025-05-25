@@ -30,7 +30,7 @@ Take control of your podcast workflow with **Ques.ai**, a powerful tool that sim
 
 - React 18  
 - Redux Toolkit + RTK Query  
-- Vinela CSS  
+- Tailwind CSS  
 - React Router DOM  
 
 ### 🔹 Backend
