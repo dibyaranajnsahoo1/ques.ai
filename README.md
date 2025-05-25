@@ -105,4 +105,4 @@ Visit `http://localhost:5173` in your browser 🎉
   - GET `/api/project/transcripts/:projectId`
   - PUT `/api/project/:projectId/transcript/:transcriptId/update`
 
-Made with ❤️ by Vinay
+Made with ❤️ by Dibya
