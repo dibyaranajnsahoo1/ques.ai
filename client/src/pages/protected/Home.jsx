@@ -75,7 +75,7 @@ const Home = () => {
                                 className="bg-primary text-white px-5 py-2 rounded-md mx-3 hover:scale-105 duration-500 font-roboto"
                                 onClick={() => navigate("/projects")}
                             >
-                                Go to Projects
+                                My Projects
                             </button>
                         )}
 

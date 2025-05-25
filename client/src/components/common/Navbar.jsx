@@ -4,6 +4,7 @@ import QSLogo from "./QSLogo";
 import { Bell, LogOut, Settings } from "lucide-react";
 import { useLogoutMeMutation } from "../../redux/service";
 import { toast } from "sonner";
+// import logo from "../../assets/Home/QuesLogo-2.png"
 
 const NavBar = () => {
   const location = useLocation();
@@ -32,7 +33,10 @@ const NavBar = () => {
       <div className="flex justify-between items-center">
         {/* Logo Section */}
         <NavLink to="/" aria-label="Home">
-          <QSLogo color="#7E22CE" width={40} height={40} />
+          {/* <QSLogo color="#7E22CE" width={40} height={40} /> */}
+          <QSLogo width={170} height={170} />
+
+         
         </NavLink>
 
         {/* Icons Section */}

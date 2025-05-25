@@ -50,7 +50,7 @@ const UploadInput = ({ onClose, onUpdate, icon, text }) => {
             <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-2">
                     <img src={icon} className="w-7 h-7 rounded-full" alt="icon" />
-                    <h2 className="text-xl font-bold">{text}</h2>
+                    <h2 className="text-xl font-bold">Upload From {text}</h2>
                 </div>
                 <div onClick={onClose}>
                     <X

@@ -72,10 +72,11 @@ const SideBar = () => {
             {/* Mobile Sidebar */}
             <div className={`fixed top-0 left-0 h-full w-3/4 bg-white z-40 shadow-lg transform transition-transform duration-300 ${
                 isOpen ? "translate-x-0" : "-translate-x-full"} md:hidden`}>
-                <div className="flex justify-between items-center p-4 border-b">
-                    <QSLogo color="#7E22CE" width={30} height={30} />
+              <div className="flex justify-between items-left p-4 border-b">
+                    <QSLogo color="#7E22CE" width={170} height={170} />
                     <X size={24} onClick={() => setIsOpen(false)} className="cursor-pointer" />
                 </div>
+
                 <div className="flex flex-col p-4">{renderLinks()}</div>
                 <NavLink to="/view/settings" onClick={() => setIsOpen(false)}>
                     <div className="flex gap-3 items-center h-10 pl-4 mt-6">
@@ -98,8 +99,8 @@ const SideBar = () => {
             <div className="hidden md:flex w-1/3 max-h-screen bg-white font-roboto flex-col justify-between">
                 <div>
                     <NavLink to="/">
-                        <div className="w-full flex justify-center p-6">
-                            <QSLogo color="#7E22CE" width={30} height={30} />
+                        <div className="flex flex-col items-start p-4 gap-2">
+                            <QSLogo color="#7E22CE" width={150} height={150} />
                         </div>
                     </NavLink>
                     <div className="w-full flex-col items-start my-1 pl-3">

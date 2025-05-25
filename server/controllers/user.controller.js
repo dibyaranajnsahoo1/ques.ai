@@ -47,7 +47,7 @@ const userSignup = async (req, res) => {
         res.cookie("token", accesToken, {
             maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production", // Only true in production
+            secure: process.env.NODE_ENV === "production", 
             sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
             path: "/",
         });

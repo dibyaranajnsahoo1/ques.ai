@@ -70,7 +70,7 @@ const AccountSettings = () => {
   };
 
   return (
-    <div className="w-full p-4 md:p-8 bg-white rounded-md shadow-md">
+    <div className="w-full p-4 md:p-8 bg-white">
       <UploadNavBar projectName="Settings" pageName="Account Settings" />
 
       <div className="my-6 flex items-center gap-2">
@@ -170,7 +170,7 @@ const AccountSettings = () => {
       </div>
 
       {/* Subscription */}
-      <div className="mt-12">
+      <div className="mt-12 w-full">
         <Subscription />
       </div>
     </div>

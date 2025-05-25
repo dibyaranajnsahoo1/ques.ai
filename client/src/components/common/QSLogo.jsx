@@ -1,14 +1,19 @@
 import React from "react";
-import CustomQLogo from "../UI/Qlogo";
+import logo from "../../assets/Home/QuesLogo-2.png"
 
-const QSLogo = ({ color, height, width }) => {
+const QSLogo = ({ height, width }) => {
     return (
-        // creating custom log and text
-        <div className="flex gap-[5px] items-center">
-            <CustomQLogo stroke={color} width={width} height={height} />
-            <h2 className="text-center text-3xl font-bold" style={{ color }}>
-                Ques.<span className="font-thin">AI</span>
-            </h2>
+        <div className="flex items-center">
+           <img
+                src={logo}
+                alt="logo"
+                // className=" object-contain"
+                width={width}
+                height={height}
+                />
+
+
+
         </div>
     );
 };
